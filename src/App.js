@@ -1,4 +1,5 @@
 import React from 'react';
+import {StyleSheet,ImageBackground} from 'react-native';
 import CountryPicker from './component/CountryPicker';
 import Display from './component/Display';
 import styles from './App.module.css';
@@ -26,7 +27,8 @@ class App extends React.Component {
 
     render() {
         return (
-            <div style={{backgroundColor:'grey',marginTop:-20}}>
+            <div style={{marginTop:-20}}>
+               <ImageBackground source={require('./assets/Dunia.png')} style={styless.backgroundImage}>
                 <div className={styles.container}>
                     <center>
                         <h1>Data Covid-19</h1>
@@ -35,9 +37,21 @@ class App extends React.Component {
                     <CountryPicker handleCountryChange={this.handleCountryChange} />
                     <Display data={this.state.dataCountry} country={this.state.country} />
                 </div>
+                </ImageBackground>
             </div>
         )
     }
 }
 
 export default App;
+
+const styless= StyleSheet.create({
+    backgroundImage:{
+        flex:1,
+        width:undefined,
+        height:undefined,
+        flexDirection: 'column',
+        backgroundColor: 'transparent',
+        justifyContent: 'flex-start'
+    }
+})
